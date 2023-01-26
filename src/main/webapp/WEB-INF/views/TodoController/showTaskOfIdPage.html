@@ -7,5 +7,11 @@
 <body>
 <h1 th:text="${'Name task: ' + myTask.getNameTask()}">VALUE</h1>
 <h3 th:text="${'Title task: ' + myTask.getTitleTask()}">VALUE</h3>
+<form th:method="GET" th:action="@{/myTask/{id}/edit(id=${myTask.getId()})}">
+    <input type="submit" value="Edit"/>
+</form>
+<form th:method="DELETE" th:action="@{/myTask/{id}(id=${myTask.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
 </body>
 </html>

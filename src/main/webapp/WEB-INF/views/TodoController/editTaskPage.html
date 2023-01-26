@@ -5,13 +5,14 @@
     <title>EditPage</title>
 </head>
 <body>
-<form  th:action="@{/myTask/{id}/edit(id=${tasks.getId()})}" th:object="${tasks}">
+<form th:method="PATCH" th:action="@{/myTask/{id}/edit(id=${tasks.getId()})}" th:object="${tasks}">
   <label for="name">Edit task name: </label>
   <input type="text" th:field="*{nameTask}" name="name" id="name"/>
 <!--  <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{nameTask}">Name Error</div>-->
   <br>
   <label for="title">Edit task name: </label>
   <input type="text" th:field="*{titleTask}" name="title" id="title"/>
+    <input type="submit" value="Edit!"/>
 <!--  <div style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{titleTask}">Title Error</div>-->
   </form>
 </body>

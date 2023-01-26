@@ -25,8 +25,18 @@ public class TodoDAO {
                .stream().findAny().orElse(null);
     }
 
-    public void editTask(Integer id, TodoList updatedTask) {
-        jdbcTemplate.update("UPDATE tasks SET nametask=?, title=?, done=? WHERE id=?",
-                updatedTask.getNameTask(), updatedTask.getTitleTask(), id);
+    public void editTask(Integer id,TodoList updatedTask, boolean done) {
+        jdbcTemplate.update("UPDATE tasks SET nametask=?, titletask=?, done=? WHERE id=?",
+                updatedTask.getNameTask(), updatedTask.getTitleTask(), done,id);
     }
+
+    public void createTask(TodoList todoList) {
+       jdbcTemplate.update("INSERT INTO tasks (nameTask, titleTask, done) VALUES (?, ?, ?)",
+               todoList.getNameTask(), todoList.getTitleTask(), todoList.getDone());
+    }
+    public void deleteTask(Integer id) {
+       jdbcTemplate.update("DELETE FROM tasks WHERE id=?", id);
+    }
+
+
 }
